@@ -1,1 +1,1 @@
-https://sra-download.ncbi.nlm.nih.gov/traces/sra51/SRR/011717/SRR11999224
+https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos1/sra-pub-run-5/SRR1944102/SRR1944102.1
