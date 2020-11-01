@@ -20,9 +20,7 @@ Or, if we already have an older version of the code
 
 We will need a conda environment with `Snakemake` to run the scripts. We can set that up on carbonate by first unloading the default python module and loading an Anaconda module instead.
 
-`module unload python/3.6.8`
-
-`anaconda/python3.8/2020.07`
+`module swap python/3.6.8 anaconda/python3.8/2020.07`
 
 This will allow us to use Anaconda to manage python packages as well as replace the default `python` command with a much more flexible one from Anaconda. From here we can start working inside of an Anaconda environment. First we will activate the `base` environment.
 
