@@ -26,13 +26,13 @@ This will allow us to use Anaconda to manage python packages as well as replace 
 
 `source activate base`
 
-Now we should see `(base)` in from of the prompt on the command line. This means we are inside a virtual environment--a computer within the computer--that will give us access to all of Anaconda's features. Most importantly, the ability to install packages to specific environments. First, we need to make a new environment for our project. The following command will create a new empty environment called `I590-term-project`.
+Now we should see `(base)` in from of the prompt on the command line. This means we are inside a virtual environment--a computer within the computer--that will give us access to all of Anaconda's features. Most importantly, the ability to install packages to specific environments. First, we need to make a new environment for our project. The following command will create a new empty environment called `590term`.
 
-`conda create --name I590-term-project`
+`conda create --name 590term`
 
 In order to install packages and do stuff in that environment, we need to activate it in a similar we we activated the base environment.
 
-`conda activate I590-term-project`
+`conda activate 590term`
 
 Finally, we can install Snakemake (and eventually, other packages we might need).
 
