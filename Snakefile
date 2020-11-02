@@ -12,7 +12,7 @@ rule gunzip-reference:
     output:
         'data/ref/macaque-ref.fna'
     shell:
-        'gunzip {input} > {output}'
+        'gunzip -c {input} > {output}'
 
 rule download-reads:
     input:
@@ -26,9 +26,13 @@ rule index_reference:
     input:
         'data/ref/macaque-ref.fna'
     output:
-        'data/ref/idx-macaque-ref.fna'
+        'data/bwa-index/macaque-ref.amb',
+        'data/bwa-index/macaque-ref.ann',
+        'data/bwa-index/macaque-ref.bwt',
+        'data/bwa-index/macaque-ref.pac',
+        'data/bwa-index/macaque-ref.sa'
     shell:
-        'bwa index -p idx-macaque {output}'
+        'bwa index -p data/bwa-idx/macaque-ref {input}'
 
 rule map_reads:
     input:

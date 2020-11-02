@@ -1,3 +1,6 @@
+test/
+
+# platform stuff
 .vscode
 
 # Byte-compiled / optimized / DLL files
