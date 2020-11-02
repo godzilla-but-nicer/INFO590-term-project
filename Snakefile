@@ -36,7 +36,7 @@ rule index_reference:
 
 rule map_reads:
     input:
-        ref = 'data/macaque-ref.fna',
+        idx = 'data/bwa-idx/macaque-ref',
         reads = 'data/reads/macaque-{sex}.fastq'
     output:
         'something, figure out later'
