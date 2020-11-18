@@ -1,4 +1,4 @@
-rule download-reference:
+rule download_reference:
     input:
         'data/macaque-url.txt'
     output:
@@ -6,7 +6,7 @@ rule download-reference:
     shell:
         'wget -b -i {input} -O {output}'
 
-rule gunzip-reference:
+rule gunzip_reference:
     input:
         'data/ref/macaque-ref.fna.gz'
     output:
@@ -14,7 +14,7 @@ rule gunzip-reference:
     shell:
         'gunzip -c {input} > {output}'
 
-rule download-reads:
+rule download_reads:
     input:
         'data/{sex}-reads-url.txt'
     output:

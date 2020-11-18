@@ -15,6 +15,8 @@ module load anaconda/python3.8/2020.07
 ######  Job commands go below this line #####
 source activate base
 conda activate 590term
+cd /N/project/info590_edwards_wall
+
 
 snakemake --cores 1 data/ref/macaque-ref.fna
 snakemake --cores 1 data/reads/macaque-female.fastq
