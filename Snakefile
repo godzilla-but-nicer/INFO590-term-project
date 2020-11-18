@@ -1,4 +1,4 @@
-rule download-reference:
+rule download_reference:
     input:
         'data/macaque-url.txt'
     output:
@@ -6,7 +6,7 @@ rule download-reference:
     shell:
         'wget -i {input} -O {output}'
 
-rule gunzip-reference:
+rule gunzip_reference:
     input:
         'data/ref/macaque-ref.fna.gz'
     output:
@@ -14,7 +14,7 @@ rule gunzip-reference:
     shell:
         'gunzip -c {input} > {output}'
 
-rule download-reads:
+rule download_reads:
     input:
         'data/{sex}-reads-url.txt'
     output:
@@ -34,11 +34,20 @@ rule index_reference:
     shell:
         'bwa index -p data/bwa-idx/macaque-ref {input}'
 
-rule map_reads:
+rule bwa_map:
     input:
-        idx = 'data/bwa-idx/macaque-ref',
-        reads = 'data/reads/macaque-{sex}.fastq'
+        'data/bwa-idx/macaque-ref',
+        'data/reads/macaque-{sex}.fastq'
     output:
-        'something, figure out later'
+        'data/mapped/{sex}-mapped.sam'
+    threads: 24
     shell:
-        'ls -la'
+        'bwa-mem2 mem -t {threads} {input} > {output}'
+
+rule convert_sam:
+    input:
+        'data/mapped/{sex}-mapped.sam'
+    output:
+        'data/mapped/{sex}-mapped.bam'
+    shell:
+        'samtools view -Sb {input} > {output} && rm {input}'
