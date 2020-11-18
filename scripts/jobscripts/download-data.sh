@@ -1,7 +1,7 @@
 #!/bin/bash
 #####  Constructed by HPC everywhere #####
 #PBS -M patgwall@iu.edu
-#PBS -l nodes=1:ppn=1,walltime=0:12:59:00
+#PBS -l nodes=1:ppn=3,walltime=0:12:59:00
 #PBS -m abe
 #PBS -N download-data
 #PBS -j oe

@@ -4,7 +4,7 @@ rule download-reference:
     output:
         'data/ref/macaque-ref.fna.gz'
     shell:
-        'wget -i {input} -O {output}'
+        'wget -b -i {input} -O {output}'
 
 rule gunzip-reference:
     input:
@@ -20,7 +20,7 @@ rule download-reads:
     output:
         'data/reads/macaque-{sex}.fastq'
     shell:
-        'wget -i {input} -O {output}'
+        'wget -b -i {input} -O {output}'
 
 rule index_reference:
     input:
