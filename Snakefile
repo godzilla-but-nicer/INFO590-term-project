@@ -26,23 +26,18 @@ rule index_reference:
     input:
         'data/ref/macaque-ref.fna'
     output:
-        'data/bwa-index/macaque-ref.amb',
-        'data/bwa-index/macaque-ref.ann',
-        'data/bwa-index/macaque-ref.bwt',
-        'data/bwa-index/macaque-ref.pac',
-        'data/bwa-index/macaque-ref.sa'
+        directory('data/bwa-idx/')
     shell:
         'bwa index -p data/bwa-idx/macaque-ref {input}'
 
 rule bwa_map:
     input:
-        'data/bwa-idx/macaque-ref',
-        'data/reads/macaque-{sex}.fastq'
+        'data/bwa-idx/',
+        fq='data/reads/macaque-{sex}.fastq'
     output:
         'data/mapped/{sex}-mapped.sam'
-    threads: 24
     shell:
-        'bwa-mem2 mem -t {threads} {input} > {output}'
+        'bwa mem -t 24 data/bwa-idx/macaque-ref {input.fq} > {output}'
 
 rule convert_sam:
     input:
