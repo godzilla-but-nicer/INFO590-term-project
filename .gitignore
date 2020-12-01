@@ -1,4 +1,11 @@
 test/
+data/example/*
+data/mapped/*
+data/reads/*
+data/ref/*
+
+# torque logs
+*.o*
 
 # platform stuff
 .vscode

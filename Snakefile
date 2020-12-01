@@ -18,9 +18,18 @@ rule download_reads:
     input:
         'data/{sex}-reads-url.txt'
     output:
-        'data/reads/macaque-{sex}.fastq'
+        'data/reads/macaque-{sex}.srr'
     shell:
         'wget -i {input} -O {output}'
+
+rule split_reads:
+	input:
+	    'data/reads/macaque-{sex}.srr'
+	output:
+	    'data/reads/macaque-{sex}_1.fastq'
+            'data/reads/macaque-{sex}_2.fastq'
+	shell:
+	    'fastq-dump --split-spot {input}'
 
 rule index_reference:
     input:
@@ -37,7 +46,7 @@ rule bwa_map:
     output:
         'data/mapped/{sex}-mapped.sam'
     shell:
-        'bwa mem -t 24 data/bwa-idx/macaque-ref {input.fq} > {output}'
+        'bwa mem -p -t 24 data/bwa-idx/macaque-ref {input.fq} > {output}'
 
 rule convert_sam:
     input:
@@ -45,4 +54,13 @@ rule convert_sam:
     output:
         'data/mapped/{sex}-mapped.bam'
     shell:
-        'samtools view -Sb {input} > {output} && rm {input}'
+        'samtools view -b {input} -o {output} && rm {input}'
+
+rule bam_to_fasta:
+    input:
+        'data/mapped/{sex}-mapped.bam'
+    output:
+        'data/mapped/{sex}-mapped.fna'
+    shell:
+        'samtools fasta {input} > {output}'
+

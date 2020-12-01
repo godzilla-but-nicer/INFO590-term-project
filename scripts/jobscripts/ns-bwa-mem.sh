@@ -1,9 +1,9 @@
 #!/bin/bash
 #####  Constructed by HPC everywhere #####
 #PBS -M patgwall@iu.edu
-#PBS -l nodes=1:ppn=24,walltime=0:24:00:00
+#PBS -l nodes=1:ppn=10,walltime=0:00:10:00
 #PBS -m abe
-#PBS -N bwa-mem2
+#PBS -N 2ns-bwa-mem
 #PBS -j oe
 
 ######  Module commands #####
@@ -16,8 +16,7 @@ module load bwa/0.7.12
 ######  Job commands go below this line #####
 source activate base
 conda activate 590term
-cd /N/project/info590_edwards_wall
+cd /N/project/info590_edwards_wall/data/reads
 
 
-snakemake --cores 24 data/mapped/male2-mapped.sam
-snakemake --cores 24 data/mapped/female2-mapped.sam
+bwa mem -p -t 10 macaque-ref.fna macaque-female.fastq > ../ns-mapped/female.sam
