@@ -42,11 +42,12 @@ rule index_reference:
 rule bwa_map:
     input:
         'data/bwa-idx/',
-        fq='data/reads/macaque-{sex}.fastq'
+        fq1='data/reads/macaque-{sex}_1.fastq',
+        fq2='data/reads/macaque-{seq}_2.fastq'
     output:
         'data/mapped/{sex}-mapped.sam'
     shell:
-        'bwa mem -p -t 24 data/bwa-idx/macaque-ref {input.fq} > {output}'
+        'bwa mem -p -t 10 data/bwa-idx/macaque-ref {input.fq1} {input.fq2} > {output}'
 
 rule convert_sam:
     input:

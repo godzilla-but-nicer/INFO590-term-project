@@ -3,7 +3,7 @@
 #PBS -M patgwall@iu.edu
 #PBS -l nodes=1:ppn=1,walltime=0:12:59:00
 #PBS -m abe
-#PBS -N split-female2
+#PBS -N split-male-noer
 #PBS -j oe
 
 ######  Module commands #####
@@ -17,5 +17,5 @@ source activate base
 conda activate 590term
 cd /N/project/info590_edwards_wall/data/reads
 
-fastq-dump --split-spot macaque-female2.srr
+fastq-dump --split-files macaque-male.srr
 
