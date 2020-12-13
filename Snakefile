@@ -26,11 +26,11 @@ rule index_reference:
     input:
         'data/ref/macaque-ref.fna'
     output:
-        'data/bwa-index/macaque-ref.amb',
-        'data/bwa-index/macaque-ref.ann',
-        'data/bwa-index/macaque-ref.bwt',
-        'data/bwa-index/macaque-ref.pac',
-        'data/bwa-index/macaque-ref.sa'
+        'data/bwa-idx/macaque-ref.amb',
+        'data/bwa-idx/macaque-ref.ann',
+        'data/bwa-idx/macaque-ref.bwt',
+        'data/bwa-idx/macaque-ref.pac',
+        'data/bwa-idx/macaque-ref.sa'
     shell:
         'bwa index -p data/bwa-idx/macaque-ref {input}'
 
